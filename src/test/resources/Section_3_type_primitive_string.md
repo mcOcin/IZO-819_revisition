@@ -59,3 +59,41 @@ Les différents scope qu'une variable peut avoir sont:
 
 #### Vidéo 23
 - Voir test dans la classe ScopeWithInnerClassTest.java et ScopeLoopTest.java pour les subtilités.
+
+#### Vidéo 24
+- LVTI Local variable type inference , quand on type un variable avec le mot 'var'
+- ce mot clé 'var' est disponible uniquement pour les variables locales donc dans les méthodes. Et il faut que l'opérande de droite de l'assignation
+retourne bien le type.
+- 'var' n'est pas un keyword, on peut l'utiliser comme nom de variable par exemple. on peut meme faire 'var var = "test":'
+- on peut assigner un objet null à 'var' mais on ne peut pas assigner null directement sinon il ne pourra pas inferer le type. 
+- on ne peut pas l'utiliser sur une ligne de déclaration multiple comme 'var j=0, i =0;'
+- on est obligé d'assigner une valeur directement sur la ligne de création de la variable.
+- on en peut pas utiliser l'array initialization pour le var comme 'var test = {'first', 'second'};'
+- on ne peut pas faire d'array de var comme 'var[] test = ["test1", "test2", "test3"];'
+- donc PAS DE STATIC et PAS DE VARIABLE D'INSTANCE (de classe) et PAS DE PARAMETRE DE METHODE.
+- Le 'var' est disponible pour les lambdas depuis la version 11.
+- on peut l'utiliser pour déclarer une 'var' dans les boucles.
+
+#### Vidéo 25
+- attention si on a un 'short test = 1' et qu'on fait 'var i = +test' le i sera de type int a cause du sigle '+'
+- on peut faire un var avec un 'new ArrayList<>()' parce que l'ArrayList n'a pas besoin de type pour se créer
+- on peut faire un var avec un 'new String[5]'
+
+#### Vidéo 26
+- String est un objet que l'on peut créer sans constructeur, sans mot clé 'new'
+- Si on assigne le même String literal à deux var différentes l'opérateur '==' retournera true
+- Par contre si on construit deux strings via le constructeur new String("") là '==' retournera false sauf en utilisant la méthode
+intern() sur ces String on ira chercher la référence dans le String pool.
+- String est immutable. Quand on update un string avec un concaténation par exemple, une nouvelle ref est crée à chaque fois.
+- Attention que le méthode 's1.concat(s2)' ne va pas modifier s1 mais créer une nouvelle ref, un nouveau String, qu'on récupère dans le retour.
+- intern() va rechercher dans le pool string une référence avec cette valeur, si elle n'existe pas le call intern() ajoute cette valeur dans le pool.s
+
+#### Vidéo 27
+- bien retenir que les constructeurs de String avec un arry et des params en plus c'est un offset inclusive, qui commence donc à 0 et
+que le param suivant est le nombre de caractère a compté à partir de l'index de départ. Si l'on donne un trop grand nombre
+de caractère ou si l'offset de départ est trop loin par apport a l'array, on aura une runtime exception.
+
+#### Vidéo 28
+- pas oublier que si on met un objet dans une string concatenation, c'est le résultat de la méthode toString() de l'objet qui
+sera utilisé dans la concaténation.
+- Attention a la precedence des opérateurs ! voir StringTest.java
