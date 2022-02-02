@@ -97,3 +97,78 @@ de caractère ou si l'offset de départ est trop loin par apport a l'array, on a
 - pas oublier que si on met un objet dans une string concatenation, c'est le résultat de la méthode toString() de l'objet qui
 sera utilisé dans la concaténation.
 - Attention a la precedence des opérateurs ! voir StringTest.java
+
+#### Vidéo 29
+- Le premier chara d'un string est toujours à l'index 0.
+- les méthodes avec un index de début et de fin sont toujours inclusive (start) puis exclusive (end).
+- Pour comparer les String on a les méthodes 'equals' , 'equalsIgnoreCase', 'isBlank', 'isEmpty', 'contentEquals', 'compareTo'
+- Faire attention que la méthode 'equals' accepte un object en param mais retournera forcément false si le param n'est pas un String.
+- Faire attention que la méthode 'equalsIgnoreCase' accepte uniquement un String en param.
+- Pour rechercher des char dans un string on peut utiliser 'equals/equalsIgnoreCase' 'indexOf', 'lastIndexOf',
+'endsWith', 'startsWith', 'matches'
+- Pour manipuler 'concat', 'replace', 'replaceAll', 'replaceFirst', 'join', 'split', 'substring', 'subsequence'
+- Faire attention que les méthodes de comparaison retournent souvent des boolean à l'exception des méthodes
+compareTo and compareToIgnoreCase retournent des int (0 en cas d'égalité).
+
+#### Vidéo 30
+- lastIndexOf avec un int en deuxième param indique l'index de départ (inclusive) et va rechercher
+en revenant vers le début du String pour la dernière occurence du premier param.
+- Attention avec lastIndexOf même si on part au milieu d'un mot que l'on recherche il va le compter comme entier.
+Voir méthode lastIndexOfTests().
+- Dans le package java.util.regex on a Pattern et Matcher pour rechercher des string.
+- On compile() un Pattern dans lequel on peut intégrer des regex ensuite on appel la méthode matcher(String input)
+pour retourner un Matcher avec lequel on fera matches() pour savoir si le string en input match le pattern compiler.
+- .regionMatches(int startindex, String toSearch, int start, int end) premier param indique où inclusivement on commence 
+la recherche dans le string appelant. Les deux derniers param indique le début et la fin de la région à prendre dans le deuxième
+param. On peut avoir un boolean en premier param pour indiquer si oui ou non on ignorecase.
+
+#### Vidéo 31
+- Concaténation de string en utilisante des listes, array avec join(), +=, StringJoiner.
+- split() peut prendre un string en param mais aussi des regex. mais aussi un int pour indiquer le nombre d'elem
+max que l'on veut dans le [] résultant. Si on met 2 split() va donc couper le string max une fois.
+
+#### Vidéo 32
+- méthode replace()
+- attention méthode replaceAll() ne va pas remplacer toutes les occurences mais la premières trouvées.
+- substring() a un ou deux param start and end.
+- subsequence() a toujours deux param required.
+- repeat() qui prend un int en param pour indiquer le nombre de répétition à faire. Si on donne 0 en param alors
+le string n'est pas du tout répéter et un string vide est retourné. Si param négatif alors illegalArgument.
+- strip() est similaire à trim() mais en mieux car contrairement a trim() qui se sert de l'unicode U+0020(un espace) il
+se sert de Character.isWhitespace
+- String est immutable mais StringBuilder est mutable
+- valueOf et new String() utilisent un index de début (toujours inclusive) et une longueur après mais toutes les autres méthodes
+utilisent un index de début et de fin.
+
+#### Vidéo 33
+- attention que la méthode replace(char target, char replace)  AVEC CHAR UNIQUEMENT retourne le même string si elle n'a pas rien trouvé à remplacer ou si 
+on donne la même valeur pour les deux params. Donc l'opérateur == retournera true si on compare résultat et origine.
+- Si on utiliser replace(String target, string replace) alors là un nouveau string sera créer d'office.
+- Si on fait un origine.substring(0, origine.length()) alors pas de nouveau string créé non plus.
+- Si on fait String s5 = s4 + s3 +s2 +s1 en réalité on va créer 3 string avant pour faire le s5 car c'est évalué ainsi
+String s5 = (s4+ (s3 + (s2 + s1)))
+
+#### Vidéo 34
+- StringBuilder plus perf quand on fait bcp de concaténation.
+- StringBuilder a 4 constructeurs diff.
+- StringBuilder a une capacity , qui est mise à jour dés qu'on le modifier. par défaut 16.
+- Attention qu'avec les StringBuilder == ou .equals() revient a la même chose que le .equals() correspond à la définition
+qu'il y a dans Object.
+- Pour comparer les valeurs de StringBuilder on peut les convertir en String avec toString() ou utiliser Comparator avec compareTo()
+- append() insert( ) avec toutes leur possibilités de param.
+- Attention que ces méthodes vont modifier direct la valeur dans le StringBuilder qui est mutable et ne pas retourner de valeur
+contrairement aux méthodes de String qui vont créer un nouveau String retourné.
+- indexOf , deleteCharAt() , delete()
+- ATTENTION reverse() attention cette méthode retourne un nouveau StringBuilder en plus de modifier l'appelant. Le StringBuilder
+dans le retour n'est qu'une copie, == va donc retourner true si on test.
+- ATTENTION substring() va retourner un String qui n'est donc pas lié à la valeur du StringBuilder appelant.
+
+#### Vidéo 35
+- trimToSize() ne va pas enlever les whitespace du sb mais diminuer la capacity pour la mettre à la même valeur que le nombre de caractère.
+- si l'on veut réellement trim() un sb alors on fera sb.toString().strip() ce qui mettra a jour la length du sb mais pas sa capacity.
+- getChars() méthode fournie par Sb et String. Fonctionne uniquement avec char et pas CharSequence.
+fonctionne uniquement avec un array de char[] initialisé. Si l'array est pas assez grand que pour contenir les char
+extraits alors on a indexoutofbound
+- 
+
+
