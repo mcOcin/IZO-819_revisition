@@ -39,3 +39,20 @@ croit très facilement a du code qui ne compile pas.
 dans le if en plus de modifier une variable.
 - Attention encore au short circuit même dans les if , si on fait if( (a=true) || (b=true) || (c=true)) alors seul la première
 assignation a lieu et puis on rentre dans le if , b et c ne sont pas modifié
+
+#### Vidéo 44
+- le switch fonctionne avec les enum byte short int char et leur wrapper ainsi que les String
+- default n'a pas besoin d'être en dernier
+- Attention si on a pas de break, les cases suivants vont être évalués jusqu'a tomber sur le premier break.
+- Il est possible de mettre des expressions dans les case d'un switch seulement si elles peuvent être évaluées au
+compile time et donc par exemple utiliser deux literal ou bien des constantes. voir SwitchTest.java.
+- On peut faire de "l'héritance" de case en les collant voir SwitchTest.
+- Si label dupliqué dans un switch alors erreur de compilation.
+
+#### Vidéo 45
+- Attention que les label et la param du switch doivent être du même type. Donc si on a un byte en param et qu'on un case
+supérieur à 127 alors on sait qu'erreur de compilation.
+- Si le switch est dans une loop et que dans un case on a un 'continue;' attention que le reste du switch and co n'est pas
+exécuter et qu'on revient direct sur un nouveau tour de boucle.
+- Possible d'avoir un Object dans un switch seulement si c'est un wrapper de String ou byte short char int.
+- 
