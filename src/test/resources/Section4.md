@@ -55,4 +55,14 @@ supérieur à 127 alors on sait qu'erreur de compilation.
 - Si le switch est dans une loop et que dans un case on a un 'continue;' attention que le reste du switch and co n'est pas
 exécuter et qu'on revient direct sur un nouveau tour de boucle.
 - Possible d'avoir un Object dans un switch seulement si c'est un wrapper de String ou byte short char int.
-- 
+
+#### Vidéo 46
+- la partie initialization dans un for est optionel
+- loop n'est pas un mot réservé
+- break; et continue; dans les loops
+- la loop "for(;;);" est une loop infinie qui compile
+
+#### Vidéo 47
+- exemple avec des nested loop utilisant un break et continue sur plusieurs labels.
+- si une exception se produit durant la partie initialisation du for alors la partie conditional et 'incrémentale' ne
+sont pas exécutées.
