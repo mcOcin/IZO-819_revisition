@@ -1,5 +1,12 @@
 package section5;
 
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class ArrayTest {
 
     static String[] test1 = {};
@@ -21,5 +28,19 @@ public class ArrayTest {
         firstArray[0] = 69;
         System.out.println("origin: " + firstArray[0] + " linked value: " + linkedArray[0]);
 
+        String[] testListOf = {"un", "deux", "trois"};
+        List<String> firstList = List.copyOf(Arrays.asList(testListOf));
+        assertThat(firstList.size()).isEqualTo(3);
+        List<List<String>> secondList = List.of(firstList);
+        assertThat(secondList.size()).isEqualTo(1);
+        assertThat(secondList.get(0).size()).isEqualTo(3);
+        // Value and structural update not possible with List.of and List.copyOf
+        assertThrows(UnsupportedOperationException.class, () -> firstList.sort(Comparator.naturalOrder()));
+        assertThrows(UnsupportedOperationException.class, () -> secondList.add(List.of()));
+        // Only structural and value update is ok with Arrays.asList. Only list size is immutable
+        List<String> structuralUpdatePossible = Arrays.asList(testListOf);
+        structuralUpdatePossible.sort(Comparator.naturalOrder());
+        structuralUpdatePossible.set(0, "newValue");
+        assertThrows(UnsupportedOperationException.class, () -> structuralUpdatePossible.add("IMPOSSIBLE"));
     }
 }

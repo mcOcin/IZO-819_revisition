@@ -64,5 +64,23 @@ UnsupportedOperationException
 #### Vidéo 55
 - Attention que quand on a un array multidimensionnel si on fait un Arrays.copyOf() dessus on va juste copier la première dimension
 - Si on veut faire une deep copy il faut parser la première dimension et faire un Arrays.clone() sur tous les array de seconde dimension.
-- 
 
+#### Vidéo 56
+- Montre qu'on peut prendre des int et les mettre dans des Integer ou des long Long parce que java va faire de l'autoboxing
+- Par contre on ne peut pas faire de Long[] test = new int[2]; on pourra seulement mettre des int dedans après init.
+- Attention que la méthode Arrays.compare utilise la méthode compareTo qui vient de Comparable. Si on a un array de Number qui n'implémente pas
+cette méthode, Arrays.compare() ne compilera pas avec cet array.
+
+#### Vidéo 57
+- Rappel que List.of() et List.copyOF() retournent des listes immutables.
+- Attention que List.of() reçoit un varargs de type E. Donc si on donne une list à List.of() on va récupérer une list d'un seul élément
+qui contiendra une liste à l'index 0, une liste de liste.
+- Attention que List.of et list.copyOf retournent des list immutables que ce soit en terme de valeur que de structure.
+Tandis que Arrays.asList retourne une list immutable en terme de taille mais est mutable en terme de structure et valeur.
+- On peut transformer une list en array avec List.toArray() mais si l'array n'est pas assez grand que pour contenir
+la liste entière alors rien n'ira dans l'array. Par contre si l'array est trop grand seul le surplus n'est pas rempli.
+- On peut ne pas donner d'array en param a List.toArray et on sera sûr que ça passe ou bien donner en param un array de size 0.
+
+#### Vidéo 58
+- Méthodes pour clone un array: clone(), copyOF(), copyOfRange(), arrayCopy() (tous des shallow copy mutables)
+- Méthodes pour clone list: List.of(), List.copyOf()
