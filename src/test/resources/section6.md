@@ -22,5 +22,19 @@ attention que si la méthode retourne une référence d'une var celle ci n'est p
 de la classe hormis ceux de la super class si il y a.
 - On ne peut pas mettre de return,this,super dans les block d'initilization
 
+#### Vidéo 64
+- L'assignement des variables d'instances s'exécutent dans l'ordre de leur définition et avec le même niveau de priorité
+que les block d'initialization. L'assignement des var static avec le même ordre de prio que les block static et les var d'instance
+avec le même ordre de prio que les block d'instance.
+
+#### Vidéo 65
+- Attention que dans les block d'init on ne peut pas utiliser de var qui sont déclarées plus loin hormis si c'est pour leur
+assigner une valeur.
+- Attention que si on est dans une sous class le constructeur de la ou les class parents sera appelé en tout premier,
+même avant les block. L'ordre serait donc : constructeur parent, block d'init et assignment, constructeur de la classe.
+
+
+
+
 
 
